@@ -52,6 +52,7 @@ dbClient.connect(async error => {
     while (tx.blockHash === null) {
       tx = await web3.eth.getTransaction(hash);
       console.log(tx.blockHash);
+      await new Promise(resolve => setTimeout(resolve, 5000));
     }
     await events.updateOne(
       { url: eventUrl },
