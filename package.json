@@ -1,0 +1,20 @@
+{
+  "name": "lemur",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lemur.js",
+  "scripts": {
+    "start": "node lemur.js comunicaciones-seguras"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.5.7",
+    "node-fetch": "^2.6.0",
+    "web3": "^1.2.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
