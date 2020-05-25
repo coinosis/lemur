@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "lemur.js",
-  "scripts": {
-    "start": "node lemur.js comunicaciones-seguras"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
