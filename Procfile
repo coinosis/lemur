@@ -1,0 +1,1 @@
+worker: node ./lemur.js comunicaciones-seguras
