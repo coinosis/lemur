@@ -39,7 +39,9 @@ dbClient.connect(async error => {
   const { fee: feeUSD } = event;
 
   const handleTx = async hash => {
+    console.log(hash);
     let tx = await web3.eth.getTransaction(hash);
+    console.log(tx);
     if (tx.to !== contractAddress) return;
     console.log(tx.value);
     const ethPrice = await getEthPrice();
