@@ -2,7 +2,7 @@
   "development": {
     "id": "development",
     "providerURI": "ws://localhost:8545",
-    "contractAddress": "0x25Bc5ac07Fb074b79708684B942Bddbb65Ba2fcb", // update this manually
+    "contractAddress": "0x25Bc5ac07Fb074b79708684B942Bddbb65Ba2fcb",
     "backendURI": "http://localhost:3000"
   },
   "testing": {
