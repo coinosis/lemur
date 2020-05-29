@@ -9,7 +9,7 @@
     "id": "testing",
     "providerURI": "wss://ropsten.infura.io/ws/v3/58a2b59a8caa4c2e9834f8c3dd228b06",
     "contractAddress": "0xF1d060bCA9177885d217Fc766984639Ef28A0eb9",
-    "backendURI": "https://coinosis-test.herokuapp.com"
+    "backendURI": "https://testing-owl.herokuapp.com"
   },
   "production": {
     "id": "",
