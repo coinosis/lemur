@@ -1,1 +1,1 @@
-worker: node ./lemur.js comunicaciones-seguras
+worker: node ./lemur.js ethbog-como-interactuar-con-una-dapp-y-recibir-tu-primer-eth
