@@ -6,12 +6,21 @@ const environment = process.env.ENVIRONMENT || 'development';
 const mongoURI = process.env.MONGODB_URI
       || 'mongodb://localhost:27017/coinosis';
 
-const providerURI = settings[environment].providerURI;
+const {
+  etherscanKey,
+  backendURI,
+  contractAddress,
+  providerURI,
+  startBlock,
+  apiName,
+} = settings[environment];
+
 const provider = new Web3.providers.WebsocketProvider(providerURI);
 const web3 = new Web3(provider);
 const dbClient = new MongoClient(mongoURI, { useUnifiedTopology: true });
-const contractAddress = settings[environment].contractAddress;
-const backendURI = settings[environment].backendURI;
+const addressEndpoint = `http://${apiName}.etherscan.io/api?module=account`
+      + `&action=txlist&address=${contractAddress}&startblock=${startBlock}`
+      + `&endblock=99999999&sort=asc&apikey=${etherscanKey}`;
 
 if (process.argv.length < 3) {
   console.log(`usage:\n
@@ -38,10 +47,8 @@ dbClient.connect(async error => {
   const event = await events.findOne({ url: eventUrl }, { fee: 1 });
   const { fee: feeUSD } = event;
 
-  const handleTx = async hash => {
-    let tx = await web3.eth.getTransaction(hash);
-    if (!tx || tx.to !== contractAddress) return;
-    console.log(tx.value);
+  const handleTx = async tx => {
+    console.log(tx);
     const ethPrice = await getEthPrice();
     console.log(ethPrice);
     const feeETH = feeUSD / ethPrice;
@@ -49,14 +56,12 @@ dbClient.connect(async error => {
     const feeThreshold = feeWei * threshold;
     console.log(feeThreshold);
     if (tx.value < feeThreshold) return;
-    while (tx.blockHash === null) {
-      tx = await web3.eth.getTransaction(hash);
-      console.log(tx.blockHash);
-      await new Promise(resolve => setTimeout(resolve, 5000));
-    }
+    if (tx.confirmations == 0) return;
+    console.log('valid');
+    const checksumFrom = web3.utils.toChecksumAddress(tx.from);
     await events.updateOne(
       { url: eventUrl },
-      { $addToSet: { attendees: tx.from }}
+      { $addToSet: { attendees: checksumFrom }}
     );
     const event = await events.findOne(
       { url: eventUrl },
@@ -65,11 +70,22 @@ dbClient.connect(async error => {
     console.log(event.attendees);
   }
 
-  const subscription = web3.eth.subscribe('pendingTransactions')
-        .on('data', hash => {
-          handleTx(hash);
-        }).on('error', err => {
-          console.error(err);
-        });
+  const getTxList = async () => {
+    console.log(addressEndpoint);
+    const response = await fetch(`${addressEndpoint}`);
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    const data = await response.json();
+    if (data.status != 1) return;
+    console.log(data);
+    for(const i in data.result) {
+      const tx = data.result[i];
+      handleTx(tx);
+    }
+  }
+
+  getTxList();
+  setInterval(getTxList, 10000);
 
 });

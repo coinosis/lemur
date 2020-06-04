@@ -2,19 +2,28 @@
   "development": {
     "id": "development",
     "providerURI": "ws://localhost:8545",
-    "contractAddress": "0x25Bc5ac07Fb074b79708684B942Bddbb65Ba2fcb",
-    "backendURI": "http://localhost:3000"
+    "contractAddress": "0x2190ac0eab3a08c030302b288af55c6c75b86e94",
+    "backendURI": "http://localhost:3000",
+    "etherscanKey": "2RU78DJDPVG9G2VK3AHE8QVTAN65CP9MBI",
+    "startBlock": 0,
+    "apiName": "api-localhost"
   },
   "testing": {
     "id": "testing",
     "providerURI": "wss://ropsten.infura.io/ws/v3/f81483dac9a84ecda3861bf2d19d693c",
     "contractAddress": "0xF1d060bCA9177885d217Fc766984639Ef28A0eb9",
-    "backendURI": "https://testing-owl.herokuapp.com"
+    "backendURI": "https://testing-owl.herokuapp.com",
+    "etherscanKey": "K33HJVG46X7392MMEVXXYCFERNVK77I13T",
+    "startBlock": "8029719",
+    "apiName": "api-ropsten"
   },
   "production": {
     "id": "",
     "providerURI": "wss://mainnet.infura.io/ws/v3/c666db8b5b5541759cdbefbcccaa3028",
     "contractAddress": "0xBA77007e5745f7e6F80F78904c7628e30909F828",
-    "backendURI": "https://coinosis.herokuapp.com"
+    "backendURI": "https://coinosis.herokuapp.com",
+    "etherscanKey": "NAVRNVJWI4D72RX8Z5C5FAHZ8BCNC1DCVN",
+    "startBlock": "10196033",
+    "apiName": "api"
   }
 }
