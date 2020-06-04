@@ -13,7 +13,7 @@
   },
   "production": {
     "id": "",
-    "providerURI": "wss://mainnet.infura.io/ws/v3/f81483dac9a84ecda3861bf2d19d693c",
+    "providerURI": "wss://mainnet.infura.io/ws/v3/c666db8b5b5541759cdbefbcccaa3028",
     "contractAddress": "0xBA77007e5745f7e6F80F78904c7628e30909F828",
     "backendURI": "https://coinosis.herokuapp.com"
   }
