@@ -23,7 +23,7 @@
     "contractAddress": "0xBA77007e5745f7e6F80F78904c7628e30909F828",
     "backendURI": "https://coinosis.herokuapp.com",
     "etherscanKey": "NAVRNVJWI4D72RX8Z5C5FAHZ8BCNC1DCVN",
-    "startBlock": "10196033",
+    "startBlock": "10220117",
     "apiName": "api"
   }
 }
