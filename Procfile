@@ -1,1 +1,1 @@
-worker: node ./lemur.js ethbog-como-interactuar-con-una-dapp-y-recibir-tu-primer-eth
+worker: node ./lemur.js teoria-de-juegos-y-blockchain-mecanismos-de-consenso
