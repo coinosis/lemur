@@ -1,1 +1,1 @@
-worker: node ./lemur.js teoria-de-juegos-y-blockchain-mecanismos-de-consenso
+worker: node ./lemur.js blockchain-como-nunca-te-lo-han-explicado
